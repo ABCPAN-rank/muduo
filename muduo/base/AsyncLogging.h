@@ -19,10 +19,22 @@
 namespace muduo
 {
 
+/**
+ * @brief 异步日志类，提供高性能的日志记录功能
+ * 
+ * @details 该类使用双缓冲技术实现异步日志记录，通过后台线程写入日志文件,
+ *          避免日志记录对主业务逻辑的性能影响。
+ */
 class AsyncLogging : noncopyable
 {
  public:
 
+  /**
+   * @brief 构造函数
+   * @param basename 日志文件基础名称
+   * @param rollSize 单个日志文件的最大大小
+   * @param flushInterval 日志刷新间隔（秒）
+   */
   AsyncLogging(const string& basename,
                off_t rollSize,
                int flushInterval = 3);

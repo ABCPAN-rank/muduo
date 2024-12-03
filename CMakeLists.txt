@@ -51,6 +51,9 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 find_package(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+# Add an explicit path if the above doesn't work
+include_directories(C:/local/boost/boost_1_81_0)  # Adjust this path to match your Boost installation
 find_package(Protobuf)
 find_package(CURL)
 find_package(ZLIB)
@@ -95,8 +98,6 @@ endif()
 if(THRIFT_COMPILER AND THRIFT_INCLUDE_DIR AND THRIFT_LIBRARY)
   message(STATUS "found thrift")
 endif()
-
-include_directories(${Boost_INCLUDE_DIRS})
 
 include_directories(${PROJECT_SOURCE_DIR})
 

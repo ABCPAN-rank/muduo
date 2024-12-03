@@ -1,0 +1,17 @@
+digraph AsyncLogging {
+    // 设置图形属性
+    graph [rankdir=LR];
+    node [shape=record, fontname="Arial"];
+    
+    // 定义节点
+    AsyncLogging [label="{AsyncLogging|+ append()\l+ start()\l+ stop()\l|- currentBuffer_\l- nextBuffer_\l- buffers_\l}"];
+    Thread [label="Thread\n(后台写入线程)"];
+    Buffer [label="Buffer\n(日志缓冲区)"];
+    File [label="Log File\n(日志文件)"];
+    
+    // 定义关系
+    AsyncLogging -> Thread [label="owns"];
+    AsyncLogging -> Buffer [label="manages"];
+    Thread -> File [label="writes to"];
+    Buffer -> File [label="flushes to"];
+}

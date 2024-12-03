@@ -26,7 +26,7 @@ AsyncLogging::AsyncLogging(const string& basename,
     nextBuffer_(new Buffer),
     buffers_()
 {
-  currentBuffer_->bzero();
+  currentBuffer_->bzero();  
   nextBuffer_->bzero();
   buffers_.reserve(16);
 }
